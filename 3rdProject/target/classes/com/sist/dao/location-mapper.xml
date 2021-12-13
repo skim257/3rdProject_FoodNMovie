@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.dao.location-mapper">
+  <select id="foodGetNameData" resultType="String">
+    SELECT DISTINCT name FROM project_food_location
+  </select>
+
+  <select id="foodInfoData" resultType="FoodLocationVO" parameterType="String">
+    SELECT no,name,address,tel,type,score 
+    FROM project_food_location
+    WHERE name=#{name}
+  </select>
+  <select id="foodListData" resultType="FoodLocationVO">
+   SELECT poster,name,rownum 
+   FROM project_food_location
+   WHERE rownum&lt;=50
+  </select>
+</mapper>
